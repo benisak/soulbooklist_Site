@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*! purgecss start ignore */
+@import "prism.css";
+/*! purgecss end ignore */
+
+/* --- ADD YOUR CUSTOM SCROLLBAR STYLES BELOW THIS LINE --- */
+
+@layer utilities {
+  /* Target the specific container class */
+  .custom-scrollbar-container {
+    /* Basic Firefox scrollbar styling */
+    scrollbar-width: thin; /* Or 'auto' or 'none' */
+    scrollbar-color: #7D7D7D transparent; /* thumb color track color */
+    /* Ensure horizontal scroll is definitely off */
+    overflow-x: hidden;
+  }
+
+  /* --- Webkit Scrollbar Styling (Chrome, Safari, Edge, Opera) --- */
+
+  /* Overall scrollbar container (defines width for vertical scrollbar) */
+  .custom-scrollbar-container::-webkit-scrollbar {
+    width: 4px; /* Mobile width */
+    height: 4px; /* Horizontal scrollbar (not visible due to overflow-x: hidden) */
+  }
+
+  /* The track (the background bar) */
+  .custom-scrollbar-container::-webkit-scrollbar-track {
+    background: transparent; /* Make track invisible */
+  }
+
+  /* The draggable scrolling handle (thumb) */
+  .custom-scrollbar-container::-webkit-scrollbar-thumb {
+    background-color: #7D7D7D; /* Your desired fill color */
+    /* Match the rounding from your SVG path definition */
+    border-radius: 2px; /* Corresponds to the rounded ends in the mobile SVG */
+  }
+
+  /* Hide the scrollbar buttons (arrows) */
+  .custom-scrollbar-container::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* Optional: Style on hover */
+  .custom-scrollbar-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker grey on hover, adjust as needed */
+  }
+
+  /* --- Desktop Styles (using Tailwind's 'md' breakpoint: 768px) --- */
+  @media (min-width: 768px) {
+    .custom-scrollbar-container::-webkit-scrollbar {
+       width: 5px; /* Desktop width from SVG */
+       height: 5px;
+    }
+    .custom-scrollbar-container::-webkit-scrollbar-thumb {
+      /* Update border-radius for desktop based on its SVG */
+       border-radius: 2.5px; /* Slightly adjusted for the 5px width */
+    }
+
+
+    .custom-scrollbar-containerCat {
+      /* Basic Firefox scrollbar styling */
+      scrollbar-width: thin; /* Or 'auto' or 'none' */
+      scrollbar-color: #B5B5B5 #4B4B4B; /* thumb color track color */
+      /* Ensure horizontal scroll is definitely off */
+      overflow-x: hidden;
+    }
+  
+    /* --- Webkit Scrollbar Styling (Chrome, Safari, Edge, Opera) --- */
+  
+    /* Overall scrollbar container (defines width for vertical scrollbar) */
+    .custom-scrollbar-containerCat::-webkit-scrollbar {
+      width: 4px; /* Mobile width */
+      height: 4px; /* Horizontal scrollbar (not visible due to overflow-x: hidden) */
+    }
+  
+    /* The track (the background bar) */
+    .custom-scrollbar-containerCat::-webkit-scrollbar-track {
+      background:  #4B4B4B; /* Make track  color */
+    }
+  
+    /* The draggable scrolling handle (thumb) */
+    .custom-scrollbar-containerCat::-webkit-scrollbar-thumb {
+      background-color: #B5B5B5; /* Your desired fill color */
+      /* Match the rounding from your SVG path definition */
+      border-radius: 2px; /* Corresponds to the rounded ends in the mobile SVG */
+    }
+  
+      /* Hide the scrollbar buttons (arrows) */
+    .custom-scrollbar-containerCat::-webkit-scrollbar-button {
+      display: none;
+    }
+  
+    /* Optional: Style on hover */
+    .custom-scrollbar-containerCat::-webkit-scrollbar-thumb:hover {
+      background-color: #555; /* Darker grey on hover, adjust as needed */
+    }
+  
+    /* --- Desktop Styles (using Tailwind's 'md' breakpoint: 768px) --- */
+    @media (min-width: 768px) {
+      .custom-scrollbar-containerCat::-webkit-scrollbar {
+         width: 5px; /* Desktop width from SVG */
+         height: 5px;
+      }
+      .custom-scrollbar-containerCat::-webkit-scrollbar-thumb {
+        /* Update border-radius for desktop based on its SVG */
+         border-radius: 2.5px; /* Slightly adjusted for the 5px width */
+      }
+  }
+
+  /* --- ADD ANY OTHER CUSTOM UTILITIES HERE --- */
+
+}
+}
+
+/* --- OR ADD OTHER CUSTOM NON-UTILITY CSS RULES HERE --- */

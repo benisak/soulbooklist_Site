@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://lullatipscom-next-version.vercel.app
+
+# Sitemaps
+Sitemap: https://lullatipscom-next-version.vercel.app/sitemap.xml
