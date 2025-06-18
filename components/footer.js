@@ -54,10 +54,10 @@ export default async function Footer() {
             <div className="hidden lg:flex items-center space-x-1 mt-0">
               {/* SVG Logo  for desktop */}
               <Image
-                src="/img/Logopop.svg"
+                src="/img/soul_F.svg"
                 alt="Logo"
-                width={122}
-                height={40}
+                width={132}
+                height={43}
                 priority={true}
               />
             </div>
@@ -66,10 +66,10 @@ export default async function Footer() {
             <div className="flex lg:hidden items-center space-x-1 mt-0">
               {/* SVG Logo for mobile */}
               <Image
-                src="/img/Logopop.svg"
+                src="/img/soul_F.svg"
                 alt="Logo"
-                width={86}
-                height={35}
+                width={132}
+                height={43}
                 priority={true}
               />
             </div>
@@ -85,13 +85,13 @@ export default async function Footer() {
                 wordWrap: 'break-word',
               }}
             >
-              PopcornCritics 2024. All rights reserved
+              Soul booklist 2025. All rights reserved
             </div>
 
           </div>
           
           {/* Links Categories Column */}
-          <div className="flex flex-col items-start text-white space-y-3 sm:w-full lg:w-auto lg:flex-grow lg:ml-[650px] lg:mt-[25px] mt-6">
+          <div className="flex flex-col items-start text-white space-y-3 sm:w-full lg:w-auto lg:flex-grow lg:ml-[550px] lg:mt-[25px] mt-6">
             {topCategories.length > 0 ? (
               topCategories.map((category, index) => (
                 <a
@@ -137,13 +137,13 @@ export default async function Footer() {
             </div>
             
             {/* Number */}
-            <div className="text-[#F5C518] text-md font-semibold underline lg:self-end mb-4"> {/* Margin Bottom for 16px gap */}
+            <div className="text-[#799EB9] text-md font-semibold underline lg:self-end mb-4"> {/* Margin Bottom for 16px gap */}
               1 345 657 876
             </div>
             
             {/* Email */}
-            <div className="text-[#F5C518] text-md font-semibold underline lg:self-end">
-              <a href="mailto:hola@popcorncritics.com">hola@popcorncritics.com</a>
+            <div className="text-[#799EB9] text-md font-semibold underline lg:self-end">
+              <a href="mailto:hola@popcorncritics.com">hola@Soulbooklist.com</a>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default async function Footer() {
         {/* Copyright for Mobile Inside Container */}
         <div className="block sm:hidden mt-6 mb-[16px]">
           <div className="text-[#FFF] text-sm font-normal leading-normal">
-          PopcornCritics 2024. All rights reserved
+          Soul booklist 2025. All rights reserved
           </div>
         </div>
 
