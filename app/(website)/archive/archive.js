@@ -31,7 +31,7 @@ export default async function Post({ searchParams }) {
       )}
       <div className="mt-10 grid gap-10 md:grid-cols-2 lg:gap-10 xl:grid-cols-3">
         {recipes.map(post => (
-          <PostListHome
+          <PostList
             pathPrefix={"blog"}
             key={post._id}
             post={post}

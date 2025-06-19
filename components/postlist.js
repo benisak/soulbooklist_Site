@@ -22,7 +22,7 @@ export default function PostList({
       {/* Outer Card Container with Hover Effect */}
       <div
         className={cx(
-          "group cursor-pointer transform transition-transform duration-300 hover:scale-105"
+          "group cursor-pointer transform transition-transform duration-300 md:hover:scale-105"
         )}
       >
         {/* Inner Grid Layout */}
