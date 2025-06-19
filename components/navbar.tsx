@@ -209,7 +209,7 @@ function NavbarContent({
               <Fragment key={`${item.label}${index}`}>
                 <Link
                   href={item.href}
-                  className="text-sm text-black hover:text-[#2F88FF] active:text-[#2F88FF]"
+                  className="text-sm text-black hover:text-[#40749C] active:text-[#40749C]"
                   style={{
                     fontSize: "14px",
                     fontStyle: "normal",
@@ -225,7 +225,7 @@ function NavbarContent({
               className="relative inline-block text-center"
               ref={dropdownRef}>
               <button
-                className="inline-flex w-full justify-center bg-white px-0 py-2 text-sm text-black hover:text-[#2F88FF] active:text-[#2F88FF] focus:outline-none"
+                className="inline-flex w-full justify-center bg-white px-0 py-2 text-sm text-black hover:text-[#40749C] active:text-[#40749C] focus:outline-none"
                 style={{
                   fontSize: "14px",
                   fontStyle: "normal",
@@ -263,7 +263,7 @@ function NavbarContent({
                     <Link
                       key={`${item.label}${index}`}
                       href={item.href}
-                      className="block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#2F88FF] active:text-[#2F88FF]"
+                      className="block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#40749C] active:text-[#40749C]"
                       role="menuitem"
                       onClick={() => setIsDropdownOpen(false)}
                       style={{
