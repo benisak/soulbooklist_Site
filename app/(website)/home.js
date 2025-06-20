@@ -65,7 +65,7 @@ export default async function HomeLifeStyle({}) {
       </div>
 
       {/* Other Posts Section */}
-      <div className="flex w-full flex-col gap-[1px] lg:gap-[55px] px-4 md:px-[120px]">
+      <div className="flex w-full flex-col gap-[1px] lg:gap-[55px] px-4 md:px-[160px]">
         {/* Other 12 Posts Section */}
         <div className="pb-0 pt-6">
           {featuredPost.length > 6 && (
