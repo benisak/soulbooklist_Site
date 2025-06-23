@@ -16,31 +16,27 @@ import SynopsisBody from "@/components/blog/SynopsisBody";
 import BookCard from "@/components/blog/BookCard";
 import SubscriptionDesktop from "@/components/SubscriptionDesktop";
 import SubscriptionMobile from "@/components/SubscriptionMobile";
+import BannerRelatedRecipes from "@/components/bannerRelatedRecipes";
 
 export default function Post({ loading, post, relatedRecipes }) {
   const [hasQueryParamVerified, setHasQueryParamVerified] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  // Query param check
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const verification = new URLSearchParams(window.location.search).get(
-        "verification"
-      );
+      const verification = new URLSearchParams(window.location.search).get("verification");
       if (verification === "dreamcode") setHasQueryParamVerified(true);
     }
   }, []);
 
-  // Mobile check
   useEffect(() => {
     const onResize = () => setIsMobile(window.innerWidth < 768);
-    onResize(); // initialize
+    onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Desktop modal timeout
   useEffect(() => {
     if (window.innerWidth >= 768) {
       const timer = setTimeout(() => setModalOpen(true), 3000);
@@ -48,19 +44,15 @@ export default function Post({ loading, post, relatedRecipes }) {
     }
   }, []);
 
-  // 404 fallback
   if (!loading && (!post || !post.slug)) {
     notFound();
   }
 
   return (
     <div className="bg-white">
-      {/* Dark overlay for modal */}
+      {/* Overlay */}
       {modalOpen && (
-        <div
-          id="page-overlay"
-          className="fixed inset-0 bg-[rgba(33,33,33,0.75)] z-40"
-        />
+        <div id="page-overlay" className="fixed inset-0 bg-[rgba(33,33,33,0.75)] z-40" />
       )}
 
       {/* Desktop modal */}
@@ -70,22 +62,12 @@ export default function Post({ loading, post, relatedRecipes }) {
 
       {/* Mobile BannerMovie (on verification) */}
       {hasQueryParamVerified && isMobile && (
-        <div
-          className="
-            relative
-            -mr-[calc(90vw-100%)]
-            md:-ml-[calc(48vw-100%)]
-            md:-mr-[calc(72vw-100%)]
-            bg-transparent
-            md:bg-[#F6F6F6]
-            md:p-0
-          "
-        >
+        <div className="relative -mr-[calc(90vw-100%)] md:-ml-[calc(48vw-100%)] md:-mr-[calc(72vw-100%)] bg-transparent md:bg-[#F6F6F6] md:p-0">
           <BannerMovie post={post} />
         </div>
       )}
 
-      {/* Mobile modal (always active) */}
+      {/* Mobile modal */}
       <div className="bg-black">
         <MovieModalMobile post={post} />
       </div>
@@ -119,7 +101,7 @@ export default function Post({ loading, post, relatedRecipes }) {
 
               <SynopsisBody value={post.synopsis_body} />
 
-              {/* === UPDATE #1: Mobile BookCard with constrained width for desired styling === */}
+              {/* BookCard (Mobile only) */}
               <div className="block w-full max-w-sm mx-auto sm:hidden">
                 <BookCard />
               </div>
@@ -128,15 +110,20 @@ export default function Post({ loading, post, relatedRecipes }) {
 
           {/* Right column */}
           <div className="mt-0 flex w-full flex-col gap-8 lg:mt-0 lg:w-[383px]">
-            {/* === UPDATE #2: Desktop BookCard is now hidden on mobile screens === */}
             <div className="hidden lg:block">
               <BookCard />
             </div>
-
             <SubscriptionDesktop />
           </div>
         </div>
       </Container>
+
+      {/* ✅ Related Recipes - fully centered outside column layout */}
+      <div className="w-full bg-white px-4 md:px-6 lg:px-0">
+        <div className="max-w-[1200px] mx-auto">
+          <BannerRelatedRecipes relatedRecipes={relatedRecipes} />
+        </div>
+      </div>
 
       {/* Mobile subscription */}
       <SubscriptionMobile />

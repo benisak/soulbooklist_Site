@@ -1,79 +1,116 @@
-"use client"; // Add this line at the very top
+"use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import RelatedPost from "@/components/relatedrecipeposts";
+import Link from "next/link";
 
-export default function BannerRelatedRecipes(props) {
-  const { relatedRecipes } = props;
+export default function BannerRelatedRecipes({ relatedRecipes }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 6; // Fixed to always show 5 on desktop
+  const itemsPerPage = 3;
 
-  useEffect(() => {
-    // Function to update itemsPerPage based on window width
-    const updateItemsPerPage = () => {
-      if (window.innerWidth < 768) { // Mobile breakpoint
-        // You can add mobile-specific logic here if needed
-      }
-    };
+  const handleNext = () => {
+    const nextIndex = currentIndex + itemsPerPage;
+    if (nextIndex < relatedRecipes.length) {
+      setCurrentIndex(nextIndex);
+    } else {
+      setCurrentIndex(0);
+    }
+  };
 
-    // Set initial items per page
-    updateItemsPerPage();
+  const handlePrev = () => {
+    const prevIndex = currentIndex - itemsPerPage;
+    if (prevIndex >= 0) {
+      setCurrentIndex(prevIndex);
+    } else {
+      const maxStart = Math.max(0, relatedRecipes.length - itemsPerPage);
+      setCurrentIndex(maxStart);
+    }
+  };
 
-    // Add event listener for window resize
-    window.addEventListener("resize", updateItemsPerPage);
-
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", updateItemsPerPage);
-    };
-  }, []);
-
+  if (!relatedRecipes || relatedRecipes.length <= 1) {
+    return (
+      <div className="relative flex w-full justify-center mb-12">
+        <Link href="/archive" className="inline-flex justify-center items-center px-4 py-3 border border-[#40749C] rounded-lg text-[#40749C] text-base font-semibold">
+          See all content
+        </Link>
+      </div>
+    );
+  }
 
   return (
-    <div className="text-[#1F1F1F] text-xl font-bold">
-
+    <div className="w-full flex justify-center">
       {/* Desktop Layout */}
-      <div className="hidden md:flex items-center justify-between mt-6">
-        <div className="text-[#1F1F1F] text-xl font-bold">
-        <div className={`grid gap-6 grid-cols-2`}>
-          {relatedRecipes.slice(currentIndex, currentIndex + itemsPerPage).map(post => (
-            <RelatedPost
-              pathPrefix={"blog"}
-              key={post._id}
-              post={post}
-              aspect="square"
-              minimal={false}
-              preloadImage={true}
-              fontSize="medium"
-              fontWeight="normal"
-            />
-          ))}
-        </div>
+      <div className="hidden md:flex flex-col w-full max-w-[1200px] px-4 py-6 rounded-2xl gap-6 bg-white">
+        
+        <div className="w-full flex justify-start items-center gap-4">
+          <div className="w-12 h-12" aria-hidden="true"></div>
+          <h2 className="text-black text-2xl font-bold font-roboto-serif leading-9">
+            Related content
+          </h2>
         </div>
 
-      </div>
+        {/* 1. Use `justify-between` to push the three direct children to the edges. */}
+        <div className="w-full flex justify-between items-stretch">
+          {/* Child 1: Prev Button */}
+          <button
+            onClick={handlePrev}
+            disabled={relatedRecipes.length <= itemsPerPage}
+            className="p-2 self-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+            >
+              <path d="M20 24L12 16L20 8" stroke="#1F1F1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
 
-      {/* Mobile Layout */}
-<div className="md:hidden mt-6 mb-6 mobile-layout">
-  <div className={`flex overflow-x-auto space-x-4`}>
-    {relatedRecipes.slice(0, 10).map(post => (
-      <RelatedPost
-        pathPrefix={"blog"}
-        key={post._id}
-        post={post}
-        aspect="square"
-        minimal={false}
-        preloadImage={true}
-        fontSize="medium"
-        fontWeight="normal"
-      />
-    ))}
-  </div>
-  
-  {/* Horizontal Scroll Bar with additional padding */}
-  <div style={{ width: '100%', height: '100%', background: '#D9D9D9', borderRadius: '20px', marginTop: '20px' }} />
-      </div>
+          {/* Child 2: The Posts Container */}
+          <div className="flex-1 flex justify-start items-stretch gap-8">
+            {relatedRecipes
+              .slice(currentIndex, currentIndex + itemsPerPage)
+              .map((post) => (
+                <div
+                  key={post._id}
+                  className="w-[calc((100%-64px)/3)] h-full" // Width is now responsive to the container
+                  style={{ flexShrink: 0 }}
+                >
+                  <RelatedPost
+                    pathPrefix="blog"
+                    post={post}
+                  />
+                </div>
+              ))}
+          </div>
 
+          {/* Child 3: Next Button */}
+          <button
+            onClick={handleNext}
+            disabled={relatedRecipes.length <= itemsPerPage}
+            className="p-2 self-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+            >
+              <path d="M12 8L20 16L12 24" stroke="#1F1F1F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* CTA */}
+        <div className="w-full flex justify-center items-center">
+          <Link href="/archive" className="inline-flex justify-center items-center px-4 py-3 border border-[#40749C] rounded-lg text-[#40749C] text-base font-semibold">
+            See all content
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
