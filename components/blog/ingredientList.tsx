@@ -119,11 +119,11 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
   }, [ingredients]);
 
   return (
-    <div className="mx-auto max-w-3xl p-0 ">
-      <h2 className="mb-1 hidden text-xl font-bold text-[#f5c518] sm:block">
-        Products
+    <div className="mx-auto mt-6 max-w-3xl p-0 ">
+      <h2 className="mb-1 hidden text-xl font-roboto-serif font-bold text-black sm:block">
+        Recommended products
       </h2>
-      <p className="text-white mb-3 ads_disclosure text-xs hidden md:block">
+      <p className="text-black font-medium mb-3 ads_disclosure text-xs hidden md:block">
         [Ad] As an Amazon Associate I earn from qualifying purchases*
       </p>
 
@@ -141,7 +141,7 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
                 <img
                   src={ingredient.productImageUrl}
                   alt={ingredient.title}
-                  className="ml-0 mr-4 h-20 w-20 rounded-lg object-cover"
+                  className="ml-0 mr-4 h-[103px] w-[88px] object-cover"
                 />
               </a>
               <div className="flex flex-1 flex-col justify-center">
@@ -150,17 +150,17 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition hover:text-green-600">
-                  <h3 className="mb-1 text-sm font-normal leading-tight text-[#007185]">
+                  <h3 className="mb-1 text-sm font-normal leading-tight text-[#007185] self-stretch">
                     {ingredient.title}
                   </h3>
                 </a>
                 <div className="flex h-[24px] w-[84px]">
                   {renderStars(ingredient.starsRating)}
                 </div>
-                <p className="text-xs font-normal text-white">
+                <p className="text-xs font-normal text-[#565959]">
                   {ingredient.countRatings != null
                     ? ingredient.countRatings.toLocaleString("en-US")
-                    : "0"}{" "}
+                    : "0"}
                   opinions
                 </p>
                 <p className="text-base font-normal leading-6 text-[#B12704]">
@@ -184,9 +184,9 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
       {/* Desktop Wishlist Button */}
       <a
         href="#"
-        className="bg-[#2F88FF] border border-[#2F88FF] text-white mt-4 hidden flex-[1_0_0] items-center justify-center gap-2 rounded-lg p-4 text-base font-semibold hover:bg-white hover:text-[#2F88FF] hover:border-[#2F88FF]
+        className="bg-[#40749C] border border-[#40749C] text-white mt-4 hidden flex-[1_0_0] items-center justify-center gap-2 rounded-lg p-4 text-base font-semibold hover:bg-white hover:text-[#40749C] hover:border-[#40749C]
                         transition-colors duration-300 ease-in-out sm:flex">
-        Get it on Amazon Prime
+        Get this wishlist
       </a>
 
       {/* Mobile Menu Button */}
@@ -209,7 +209,7 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
               flex: "1 1 0",
               height: 51,
               padding: 16,
-              background: "#2F88FF",
+              background: "#40749C",
               borderRadius: 8,
               justifyContent: "center",
               alignItems: "center",
@@ -225,7 +225,7 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
               wordWrap: "break-word"
             }}
           >
-            {modal_title || "Top Picks"}
+            {"Get Products"}
           </div>
 
           </div>
@@ -238,72 +238,71 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
         id="overlay"
         className="fixed inset-0 z-40 hidden bg-gray-600 bg-opacity-60 sm:hidden"></div>
 
-      {/* Mobile Menu Drop of Top Picks */}
+      {/* Mobile Menu Drop of Ingredients */}
       <div
-  id="mobile-menu"
-  className="fixed inset-x-0 bottom-0 z-50 hidden flex-col overflow-y-auto border-t border-gray-200 bg-black sm:hidden"
-  style={{
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
-    maxHeight: "90vh",
-  }}
->
+        id="mobile-menu"
+        className="fixed inset-x-0 bottom-0 z-50 hidden flex-col overflow-y-auto border-t border-gray-200 bg-white sm:hidden"
+        style={{
+          borderTopLeftRadius: 12,
+          borderTopRightRadius: 12,
+          maxHeight: "90vh", // Allow the container to grow up to 90% of the viewport height
+        }}
+      >
   {/* Header */}
   <div className="relative flex items-center justify-center pt-6">
-    <h2 className="font-inter text-[15px] font-bold text-white">
-      {modal_title || "Top Picks"}
-    </h2>
+  <h2 className="font-inter text-[15px] font-bold text-black">
+          {"🛒 Products"}
+        </h2>
     <button
-      type="button"
-      id="close-menu"
-      className="absolute right-4 inline-flex items-center font-medium text-blue-400 hover:underline"
-      style={{
-        width: "auto",
-        height: "auto",
-        padding: "0.5rem",
-      }}
-    >
-      <a
-        href={ingredients?.length > 0 ? ingredients[0].url : "#"}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs text-white"
+        type="button"
+        id="close-menu"
+        className="absolute right-4 inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
+        style={{
+          width: "auto",
+          height: "auto",
+          padding: "0.5rem",
+        }}
       >
-        Buy Now
-      </a>
-      <svg
-        className="svg_right close_button h-6 w-6 cursor-pointer fill-white ml-1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-      >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-        ></path>
-      </svg>
-    </button>
-  </div>
+        <a
+          href={ingredients?.length > 0 ? ingredients[0].url : "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs"
+        >
+          Buy Now
+        </a>
+        <svg
+          className="svg_right close_button h-6 w-6 cursor-pointer fill-current ml-1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+          ></path>
+        </svg>
+      </button>
+    </div>
 
   {/* Ingredient List Wrapper */}
-  <ul className="flex mt-0 p-4 space-x-3 overflow-x-auto">
+  <ul className="flex mt-0 p-4 space-x-3 overflow-x-auto"> {/* Flex container for horizontal layout */}
     {ingredients?.map((ingredient, index) => (
-      <li key={index} className="flex-shrink-0 w-[40%]">
-       {/* Left-aligned Image (same as text) */}
-        <div className="mb-2">
-          <a
-            href={ingredient.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={ingredient.productImageUrl}
-              alt={ingredient.title}
-              className="h-[120px] w-[120px] rounded-lg object-cover"
-            />
-          </a>
-        </div>
-
+      <li key={index} className="flex-shrink-0 w-[40%]"> {/* Adjust width for two full and partial third */}
+                {/* Left-aligned Image (same as the text) */}
+          <div className="mb-2">
+            <a
+              href={ingredient.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={ingredient.productImageUrl}
+                alt={ingredient.title}
+                className="h-[103px] w-[88px] object-cover"
+              />
+            </a>
+          </div>
 
         {/* Left-Aligned Content */}
         <div className="text-left">
@@ -311,23 +310,22 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
             href={ingredient.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition hover:text-green-400"
-          >
-            <h3 className="text-sm font-normal leading-tight text-blue-300 line-clamp-2">
+            className="transition hover:text-green-600">
+            <h3 className="self-stretch text-sm font-normal leading-tight text-[#007185] line-clamp-3">
               {ingredient.title}
             </h3>
           </a>
-          <div className="flex h-[24px]">
+          <div className="flex h-[24px]"> {/* Star rating */}
             {renderStars(ingredient.starsRating)}
           </div>
-          <p className="text-xs font-normal text-white">
+          <p className="text-xs font-normal text-[#565959]">
             {ingredient.countRatings.toLocaleString("en-US")} opinions
           </p>
-          <p className="text-base font-normal leading-6 text-red-400">
+          <p className="text-base font-normal leading-6 text-[#B12704]">
             US${ingredient.price.toFixed(2)}
           </p>
           {ingredient.discount && (
-            <span className="inline-block rounded bg-green-300 px-2 text-xs font-bold text-green-900">
+            <span className="inline-block rounded bg-green-200 px-2 text-xs font-bold text-green-700">
               {ingredient.discount}% OFF
             </span>
           )}
@@ -336,14 +334,10 @@ const IngredientList: React.FC<IngredientListProps> = ({ ingredients, modal_titl
     ))}
   </ul>
 
-  <p
-    className="text-white relative flex items-center justify-center mb-4 ads_disclosure"
-    style={{ fontSize: "0.63rem" }}
-  >
+  <p className="relative flex items-center justify-center mb-4 ads_disclosure" style={{ fontSize: "0.63rem" }}>
     [Ad] As an Amazon Associate I earn from qualifying purchases*
   </p>
 </div>
-
 
     </div>
   );

@@ -26,6 +26,7 @@ export interface Post {
   director?: string;
   main_cast?: string;
   categories: PostCategory[];
+  ingredients: Ingredient[];
   recommendations?: Recommendation;
   featured?: boolean;
   synopsis_body?: any;
