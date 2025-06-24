@@ -13,9 +13,9 @@ import BannerMovie from "@/components/blog/bannermovie";
 import PostHeader from "@/components/blog/PostHeader";
 import PostImage from "@/components/blog/PostImage";
 import SynopsisBody from "@/components/blog/SynopsisBody";
-import BookCard from "@/components/blog/BookCard";
 import SubscriptionDesktop from "@/components/SubscriptionDesktop";
 import SubscriptionMobile from "@/components/SubscriptionMobile";
+import IngredientList from "@/components/blog/ingredientList";
 import BannerRelatedRecipes from "@/components/bannerRelatedRecipes";
 
 export default function Post({ loading, post, relatedRecipes }) {
@@ -50,15 +50,6 @@ export default function Post({ loading, post, relatedRecipes }) {
 
   return (
     <div className="bg-white">
-      {/* Overlay */}
-      {modalOpen && (
-        <div id="page-overlay" className="fixed inset-0 bg-[rgba(33,33,33,0.75)] z-40" />
-      )}
-
-      {/* Desktop modal */}
-      {modalOpen && !isMobile && (
-        <MovieModal post={post} onClose={() => setModalOpen(false)} />
-      )}
 
       {/* Mobile BannerMovie (on verification) */}
       {hasQueryParamVerified && isMobile && (
@@ -67,25 +58,6 @@ export default function Post({ loading, post, relatedRecipes }) {
         </div>
       )}
 
-      {/* Mobile modal */}
-      <div className="bg-black">
-        <MovieModalMobile post={post} />
-      </div>
-
-      {/* Desktop MovieModal with full props */}
-      {modalOpen && (
-        <MovieModal
-          isOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-          main_image_url={post.mainImage.asset.url}
-          title={post.title}
-          plot_summary={post.plot_summary}
-          rating={post.rating}
-          url={post.amazon_product_movie.url}
-          buy_price={post.amazon_product_movie?.buy_price}
-          rent_price={post.amazon_product_movie?.rent_price}
-        />
-      )}
 
       {/* Main layout */}
       <Container className="relative">
@@ -101,18 +73,14 @@ export default function Post({ loading, post, relatedRecipes }) {
 
               <SynopsisBody value={post.synopsis_body} />
 
-              {/* BookCard (Mobile only) */}
-              <div className="block w-full max-w-sm mx-auto sm:hidden">
-                <BookCard />
-              </div>
             </div>
           </div>
 
           {/* Right column */}
           <div className="mt-0 flex w-full flex-col gap-8 lg:mt-0 lg:w-[383px]">
-            <div className="hidden lg:block">
-              <BookCard />
-            </div>
+            <IngredientList
+                ingredients={post.ingredients}
+              />
             <SubscriptionDesktop />
           </div>
         </div>
