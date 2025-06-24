@@ -3,21 +3,31 @@ import Link from "next/link";
 import { urlForImage } from "@/lib/sanity/image";
 import { parseISO, format } from "date-fns";
 import { PhotoIcon } from "@heroicons/react/24/outline";
+import CategoryLabel from "@/components/blog/category";
 
-export default function RelatedPost({ post, pathPrefix }) {
+export default function RelatedPost({
+  post,
+  pathPrefix,
+  isMobile = false,
+}) {
   const imageProps = post?.mainImage ? urlForImage(post.mainImage) : null;
   const category = post?.categories?.[0];
 
   return (
     <Link
       href={`/${pathPrefix}/post/${post.slug?.current}`}
-      className="group block h-full"
+      className={`group block h-full ${isMobile ? "w-[262px] flex-shrink-0" : ""}`}
     >
       <div className="flex flex-col bg-neutral-100 rounded-lg overflow-hidden h-full transition-transform duration-300 group-hover:scale-[1.02]">
-        
+        {/* Image */}
         <div
-          className="relative block h-64 w-full"
-          style={{ flexShrink: 0 }}
+          className="overflow-hidden bg-gray-100 relative"
+          style={{
+            width: isMobile ? "262px" : "100%",
+            height: isMobile ? "160px" : "256px",
+            borderRadius: "8px 8px 0 0",
+            flexShrink: 0,
+          }}
         >
           {imageProps ? (
             <Image
@@ -28,20 +38,20 @@ export default function RelatedPost({ post, pathPrefix }) {
               })}
               alt={post.mainImage?.alt || "Thumbnail"}
               fill
-              className="object-cover w-full h-full"
+              style={{ objectFit: "cover" }}
             />
           ) : (
-            <div className="flex items-center justify-center w-full h-full bg-gray-200">
+            <div className="flex items-center justify-center w-full h-full bg-gray-200 rounded-[8px]">
               <PhotoIcon className="w-12 h-12 text-white" />
             </div>
           )}
         </div>
 
-        <div className="p-4 flex flex-col gap-2 flex-grow">
+        {/* Content */}
+        <div className={`p-4 flex flex-col gap-2 ${isMobile ? "min-h-[130px]" : "flex-grow"}`}>
           {category && (
             <div className="inline-flex">
               <Link
-                // CORRECTED: The `pathPrefix` has been removed to create the proper URL.
                 href={`/category/${category.slug?.current}`}
                 onClick={(e) => e.stopPropagation()}
                 className="relative z-10 p-2 bg-[#E4EEFA] rounded-lg hover:bg-[#d1e3f8] transition-colors"

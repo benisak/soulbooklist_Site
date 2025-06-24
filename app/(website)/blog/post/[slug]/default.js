@@ -118,8 +118,15 @@ export default function Post({ loading, post, relatedRecipes }) {
         </div>
       </Container>
 
-      {/* ✅ Related Recipes - fully centered outside column layout */}
-      <div className="w-full bg-white px-4 md:px-6 lg:px-0">
+     {/* Related Recipes - Desktop Only */}
+      <div className="hidden md:block w-full bg-white px-4 md:px-6 lg:px-0">
+        <div className="max-w-[1200px] mx-auto">
+          <BannerRelatedRecipes relatedRecipes={relatedRecipes} />
+        </div>
+      </div>
+
+      {/* Related Recipes - Mobile Only */}
+      <div className="block md:hidden w-full bg-white pl-4 pr-0">
         <div className="max-w-[1200px] mx-auto">
           <BannerRelatedRecipes relatedRecipes={relatedRecipes} />
         </div>
