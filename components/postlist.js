@@ -56,8 +56,6 @@ export default function PostList({
                   <div
                     className="absolute inset-0"
                     style={{
-                      background:
-                        "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, black 100%)",
                       borderRadius: "0 0 8px 8px",
                       top: "auto",
                       height: "50%",
