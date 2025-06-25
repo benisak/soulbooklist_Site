@@ -1,4 +1,3 @@
-// Movies Prject
 import PostList from "@/components/postlist";
 import { searchRecipes } from "@/lib/sanity/client";
 
@@ -14,7 +13,7 @@ export default async function Search({ searchParams }) {
             maxWidth: "1185px",
             height: "100%",
             padding: 24,
-            background: "#4B4B4B",
+            background: "#F6F6F6",
             borderRadius: 12,
             marginTop: 50,
             marginLeft: "auto", // Center the container
@@ -27,17 +26,11 @@ export default async function Search({ searchParams }) {
           className="items-center justify-center"
         >
           <div
-            style={{
-              flex: "1 1 0",
-              textAlign: "center",
-              color: "white",
-              fontSize: 20,
-              fontWeight: "700",
-              wordWrap: "break-word",
-            }}
+            className="self-stretch text-center justify-start text-[#4B4B4B] text-base font-semibold font-nunito sm:text-2xl sm:font-bold"
           >
             No posts found for {query}. Try again!
           </div>
+
         </div>
       )}
       {query && !posts && (
@@ -65,9 +58,9 @@ export default async function Search({ searchParams }) {
         </div>
       )}
       {/* Parent container with horizontal padding and margin-top */}
-      <div className="px-3 md:px-6 lg:px-8 mt-12">
+      <div className="px-0 md:px-[160px] lg:px-0 mt-8">
         {/* Grid container for posts */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts &&
             posts.map((post) => (
               <div key={post._id} className="flex flex-col">
@@ -75,7 +68,7 @@ export default async function Search({ searchParams }) {
                   post={post}
                   aspect="square"
                   pathPrefix={"blog"}
-                  className="w-full h-full object-cover" // Ensures consistent scaling
+                  className="mt- w-full h-full object-cover" // Ensures consistent scaling
                 />
               </div>
             ))}

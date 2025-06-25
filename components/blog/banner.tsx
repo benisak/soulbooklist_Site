@@ -45,7 +45,7 @@ export const BannerAd: React.FC<BannerAdProps> = ({
       return;
     }
 
-    const updated = ingredients.map((item) => {
+    const updated = ingredients.map((item: Ingredient) => {
       try {
         const url = new URL(item.url);
         if (url.hostname.includes("amazon.")) {
