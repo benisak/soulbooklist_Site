@@ -47,7 +47,7 @@ export const BannerAd: React.FC<BannerAdProps> = ({
       return;
     }
 
-    const updated = ingredients.map((item) => {
+    const updated = ingredients.map((item: Ingredient) => {
       try {
         const url = new URL(item.url);
         if (url.hostname.includes("amazon.")) {
@@ -57,8 +57,9 @@ export const BannerAd: React.FC<BannerAdProps> = ({
       } catch (e) {
         console.error("Invalid URL:", item.url);
       }
-      return item; // return unchanged if not Amazon or bad URL
+      return item;
     });
+
 
     setModifiedIngredients(updated);
   }, [ingredients]);
