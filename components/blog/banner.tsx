@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, JSX, useMemo } from "react"; 
+import React, { useState, useEffect, useRef, JSX, useMemo } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 interface Ingredient {
   title: string;
@@ -34,6 +34,8 @@ export const BannerAd: React.FC<BannerAdProps> = ({
     return stars;
   };
 
+
+// dynamic url tag logic
   const [modifiedIngredients, setModifiedIngredients] = useState<Ingredient[]>([]);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export const BannerAd: React.FC<BannerAdProps> = ({
       return;
     }
 
-    const updated = ingredients.map((item: Ingredient) => {
+    const updated = ingredients.map((item) => {
       try {
         const url = new URL(item.url);
         if (url.hostname.includes("amazon.")) {
@@ -61,10 +63,7 @@ export const BannerAd: React.FC<BannerAdProps> = ({
     setModifiedIngredients(updated);
   }, [ingredients]);
 
-  const handleOutboundLinkClick = (url: string) => {
-    console.log("User clicked outbound link:", url);
-  };
-
+  
 
 const scrollPositionRef = useRef(0); // Store scroll position
 const overlayRef = useRef<HTMLDivElement | null>(null); // Overlay reference
@@ -158,7 +157,8 @@ useEffect(() => {
   }
 }, [isOverlayVisible]);
 
-   const memorizedIngredientLinks = useMemo(() => {
+// Use useMemo to optimize the rendering of ingredient links
+  const memorizedIngredientLinks = useMemo(() => {
     return modifiedIngredients.map((ingredient) => {
       const { url } = ingredient;
 
@@ -166,7 +166,7 @@ useEffect(() => {
         href: url,
         target: "_blank",
         rel: "noopener noreferrer",
-        onClick: () => handleOutboundLinkClick(url),
+        onClick: () => (url),
       };
 
       return {
@@ -175,110 +175,98 @@ useEffect(() => {
       };
     });
   }, [modifiedIngredients]);
+
+  
   
   
   return (
     <>
       {/* Overlay */}
       <div id="overlay" className={`fixed inset-0 z-40 ${isOverlayVisible ? '' : 'hidden'} bg-gray-600 bg-opacity-60 sm:hidden`}></div>
-      {/* Mobile Menu Drop of Top Picks */}
+      {/* Mobile Menu Drop of Ingredients */}
       <div
-  id="mobile-menu"
-  className={`fixed inset-x-0 bottom-0 z-50 ${isOverlayVisible ? '' : 'hidden'} flex-col overflow-y-auto border-t border-gray-700 bg-black sm:hidden`}
-  style={{
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
-    maxHeight: "90vh",
-  }}
->
-  {/* Header */}
-  <div className="relative flex items-center justify-center pt-6">
-    <h2 className="font-inter text-[15px] font-bold text-white">
-      {modal_title || "Top Picks"}
-    </h2>
-
-    <a
-      id="close-menu"
-      {...(memorizedIngredientLinks[0]?.linkProps || {})}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="absolute right-4 inline-flex items-center font-medium text-blue-300 hover:underline"
-      style={{
-        width: "auto",
-        height: "auto",
-        padding: "0.5rem",
-      }}
-    >
-      <span className="text-xs text-white">Buy Now</span>
-
-      <svg
-        className="svg_right close_button h-6 w-6 cursor-pointer fill-white ml-1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
+        id="mobile-menu"
+        className={`fixed inset-x-0 bottom-0 z-50 ${isOverlayVisible ? '' : 'hidden'} flex-col overflow-y-auto border-t border-gray-200 bg-white sm:hidden`}
+        style={{
+          borderTopLeftRadius: 12,
+          borderTopRightRadius: 12,
+          maxHeight: "90vh",
+        }}
       >
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
-        ></path>
-      </svg>
-    </a>
-  </div>
+        {/* Header */}
+        <div className="relative flex items-center justify-center pt-6">
+        <h2 className="font-inter text-[15px] font-bold text-black">
+          {"🛒 Products"}
+        </h2>
 
-  {/* Ingredient List Wrapper */}
-  <ul className="flex mt-0 p-4 space-x-3 overflow-x-auto">
-    {memorizedIngredientLinks.map((ingredient, index) => (
-      <li key={index} className="flex-shrink-0 w-[40%]">
-        {/* Left-aligned Image (same as text) */}
-        <div className="mb-2">
           <a
-            href={ingredient.url}
+            id="close-menu"
+            {...(memorizedIngredientLinks[0]?.linkProps || {})}
             target="_blank"
             rel="noopener noreferrer"
+            className="absolute right-4 inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            style={{
+              width: "auto",
+              height: "auto",
+              padding: "0.5rem",
+            }}
           >
-            <img
-              src={ingredient.productImageUrl}
-              alt={ingredient.title}
-              className="h-[120px] w-[120px] rounded-lg object-cover"
-            />
+            <span className="text-xs">Buy Now</span>
+            <svg
+              className="svg_right close_button h-6 w-6 cursor-pointer fill-current ml-1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+              ></path>
+            </svg>
           </a>
+
         </div>
-
-
-        {/* Left-Aligned Content */}
-        <div className="text-left">
-          <a
-            href={ingredient.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition hover:text-green-400"
-          >
-            <h3 className="text-sm font-normal leading-tight text-blue-300 line-clamp-2">
-              {ingredient.title}
-            </h3>
-          </a>
-          <div className="flex h-[24px]">{renderStars(ingredient.starsRating)}</div>
-          <p className="text-xs font-normal text-gray-300">
-            {ingredient.countRatings.toLocaleString("en-US")} opinions
-          </p>
-          <p className="text-base font-normal leading-6 text-red-400">
-            US${ingredient.price.toFixed(2)}
-          </p>
-          {ingredient.discount && (
-            <span className="inline-block rounded bg-green-300 px-2 text-xs font-bold text-green-900">
-              {ingredient.discount}% OFF
-            </span>
-          )}
-        </div>
-      </li>
-    ))}
-  </ul>
-
-  <p className="text-white relative flex items-center justify-center mb-4 ads_disclosure" style={{ fontSize: "0.63rem" }}>
-    [Ad] As an Amazon Associate I earn from qualifying purchases*
-  </p>
-</div>
-
+        {/* Ingredient List Wrapper */}
+        <ul className="flex mt-0 p-4 space-x-3 overflow-x-auto">
+          {memorizedIngredientLinks.map((ingredient, index) => (
+            <li key={index} className="flex-shrink-0 w-[40%]">
+               {/* Left-aligned Image (same as text) */}
+          <div className="mb-2">
+            <a
+              href={ingredient.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={ingredient.productImageUrl}
+                alt={ingredient.title}
+                className="h-[103px] w-[88px] object-cover"
+              />
+            </a>
+          </div>
+              {/* Left-Aligned Content */}
+              <div className="text-left">
+                <a href={ingredient.url} target="_blank" rel="noopener noreferrer" className="transition hover:text-green-600">
+                  <h3 className="text-sm font-normal leading-tight text-[#007185] line-clamp-3">{ingredient.title}</h3>
+                </a>
+                <div className="flex h-[24px]">{renderStars(ingredient.starsRating)}</div>
+                <p className="text-xs font-normal text-[#565959]">
+                  {ingredient.countRatings.toLocaleString("en-US")} opinions
+                </p>
+                <p className="text-base font-normal leading-6 text-[#B12704]">US${ingredient.price.toFixed(2)}</p>
+                {ingredient.discount && (
+                  <span className="inline-block rounded bg-green-200 px-2 text-xs font-bold text-green-700">
+                    {ingredient.discount}% OFF
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="relative flex items-center justify-center mb-4 ads_disclosure" style={{ fontSize: "0.63rem" }}>
+          [Ad] As an Amazon Associate I earn from qualifying purchases*
+        </p>
+      </div>
     </>
   );
 };
