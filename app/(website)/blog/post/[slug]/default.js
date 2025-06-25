@@ -7,8 +7,7 @@ import { notFound } from "next/navigation";
 import { urlForImage } from "@/lib/sanity/image";
 
 // Components
-import MovieModal from "@/components/blog/movie_modal";
-import MovieModalMobile from "@/components/blog/MovieModalMobile";
+import { BannerAd } from "@/components/blog/banner"; 
 import BannerMovie from "@/components/blog/bannermovie";
 import PostHeader from "@/components/blog/PostHeader";
 import PostImage from "@/components/blog/PostImage";
@@ -54,7 +53,7 @@ export default function Post({ loading, post, relatedRecipes }) {
       {/* Mobile BannerMovie (on verification) */}
       {hasQueryParamVerified && isMobile && (
         <div className="relative -mr-[calc(90vw-100%)] md:-ml-[calc(48vw-100%)] md:-mr-[calc(72vw-100%)] bg-transparent md:bg-[#F6F6F6] md:p-0">
-          <BannerMovie post={post} />
+          <BannerAd ingredients={post.ingredients} />
         </div>
       )}
 
