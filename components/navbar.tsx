@@ -263,7 +263,7 @@ function NavbarContent({
                     <Link
                       key={`${item.label}${index}`}
                       href={item.href}
-                      className="block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#40749C] active:text-[#40749C]"
+                      className="block px-2 py-2 text-sm text-[#000000] hover:bg-gray-100 hover:text-[#40749C] active:text-[#40749C]"
                       role="menuitem"
                       onClick={() => setIsDropdownOpen(false)}
                       style={{
