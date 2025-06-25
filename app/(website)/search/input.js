@@ -1,4 +1,3 @@
-// Movies Prject
 "use client";
 
 import { useState } from "react";
@@ -22,11 +21,11 @@ export default function Input() {
   };
 
   return (
-    <div className="text-[#D9D9D9] mx-auto mt-8 max-w-md">
+    <div className="mx-auto mt-8 max-w-md">
       <SearchInput
         q={query}
         handleChange={handleChange}
-        placeholder="Search your Movies"
+        placeholder="Buscar"
       />
     </div>
   );
