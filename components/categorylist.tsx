@@ -54,7 +54,7 @@ const CategoryList: React.FC<CategoryListProps> = ({
           className="flex"
         >
           <div
-            className="w-full bg-[#F6F6F6] rounded-lg flex flex-col justify-center items-center p-[10px] gap-[10px]
+            className="w-full bg-[#F1F6F9] rounded-lg flex flex-col justify-center items-center p-[10px] gap-[10px]
                        h-[72px] md:h-[88px]" // CHANGED: Set explicit responsive heights
           >
             <span
