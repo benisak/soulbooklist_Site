@@ -123,8 +123,8 @@ export async function generateMetadata({ params }: { params: any }) {
       images: [ogImage]
     },
     icons: {
-      icon: "/img/FaviconPC.svg",
-      apple: "/img/FaviconPC.svg"
+      icon: "/img/FaviconSBL.svg",
+      apple: "/img/FaviconSBL.svg"
     }
   };
 }
@@ -164,8 +164,8 @@ export default async function Layout({
         />
         {/* End Google Tag Manager */}
         {/* Custom favicon links */}
-        <link rel="icon" type="image/png" sizes="32x32" href="/img/FaviconPC.svg" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/img/FaviconPC.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/FaviconSBL.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/FaviconSBL.svg" />
         </head> 
       <body className="text-gray-800 antialiased dark:bg-black dark:text-gray-400">
         {/* Google Tag Manager (noscript) */}
