@@ -30,7 +30,7 @@ const HeroSection = () => {
                       3xl:h-[600px] 
                       md:bg-[#40749C] 
                       bg-[#FFFFFF]
-                      p-6 md:px-10 
+                      py-6 px-4 md:px-10 
                       flex flex-col justify-center">
         
         {/* === HEADING === */}
@@ -60,3 +60,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+

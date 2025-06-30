@@ -36,9 +36,10 @@ export default async function HomeLifeStyle({}) {
           {featuredPost.length >= 6 && (
             <>
               <div className="mt-0 w-full">
-                <h2 className="md:text-3xl text-2xl font-roboto-serif text-[30px] md:font-semibold font-bold not-italic leading-normal">
+                <h2 className="text-[20px] md:text-[30px] font-roboto-serif md:font-semibold font-bold not-italic leading-normal">
                   <strong>Recommended</strong>
                 </h2>
+
               </div>
 
               <div className="mb-10 mt-[32px] grid w-full gap-[32px] md:grid-cols-3">
