@@ -193,7 +193,7 @@ function NavbarContent({
           <Link href="/" passHref>
             <div className="flex cursor-pointer items-center">
               <Image
-                src="/img/SB_H.svg"
+                src="/img/SBL_H.svg"
                 alt="Logo"
                 width={132}
                 height={43}
@@ -334,7 +334,7 @@ function NavbarContent({
           {/* Logo */}
           <Link href="/" passHref>
             <Image
-              src="/img/SB_H.svg"
+              src="/img/SBL_H.svg"
               alt="Logo"
               width={110}
               height={36}
@@ -449,7 +449,7 @@ function NavbarContent({
               {/* Logo */}
               <Link href="/" passHref>
                 <Image
-                  src="/img/SB_H.svg"
+                  src="/img/SBL_H.svg"
                   alt="Logo"
                   width={110}
                   height={36}
