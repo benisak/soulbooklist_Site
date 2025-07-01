@@ -2,29 +2,31 @@ import Image from 'next/image';
 
 const HeroSection = () => {
   return (
-    <section className="w-full flex flex-col md:flex-row items-center">
+    <section className="w-full flex flex-col md:flex-row">
       
       {/* Image half */}
       <div className="w-full md:w-1/2 
-                      h-[210px]      /* mobile only */
-                      md:h-[446px]   /* restore desktop */
+                      aspect-[708/446]      /* mobile ratio */
+                      md:h-[450px]          /* desktop */
                       lg:h-[550px] 
                       2xl:h-[480px] 
                       3xl:h-[600px] 
-                      relative">
+                      relative overflow-hidden">
         <Image
-          src="/img/HS_SB.png"
+          src="/img/HS_SB1.png"
           alt="De todo Market"
           fill
+          sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover"
           priority
+          style={{ display: 'block' }}
         />
       </div>
 
       {/* Text half */}
       <div className="w-full md:w-1/2
-                      h-[176px]      /* mobile only */
-                      md:h-[450px]   /* restore desktop */
+                      h-[176px]             /* mobile only */
+                      md:h-[450px]          /* desktop */
                       lg:h-[550px] 
                       2xl:h-[480px] 
                       3xl:h-[600px] 
@@ -35,23 +37,16 @@ const HeroSection = () => {
         
         {/* === HEADING === */}
         <div className="md:mt-0 mt-6 self-stretch mb-4
-                        /* Mobile styles */
                         text-[#40749C] font-roboto-serif text-[24px] font-extrabold leading-normal
-                        /* Desktop styles */
                         md:text-white md:text-[40px] md:font-semibold">
           Spiritual reads. <br/>Thoughtfully chosen
         </div>
 
         <div className="self-stretch">
-          <span className="
-            /* Mobile styles */
-            text-[#40749C] text-lg font-normal leading-normal
-            /* Desktop styles */
-            md:text-white md:text-xl">
-              Discover meaningful reads that inspire reflection,
-              {/* This <br> is hidden on mobile and becomes a block (line break) on desktop */}
-              <br className="hidden md:block" />
-              connection, and a deeper sense of self.
+          <span className="text-[#40749C] text-lg font-normal leading-normal md:text-white md:text-xl">
+            Discover meaningful reads that inspire reflection,
+            <br className="hidden md:block" />
+            connection, and a deeper sense of self.
           </span>
         </div>
       </div>
@@ -60,5 +55,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-

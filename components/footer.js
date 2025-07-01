@@ -54,7 +54,7 @@ export default async function Footer() {
             <div className="hidden lg:flex items-center space-x-1 mt-0">
               {/* SVG Logo  for desktop */}
               <Image
-                src="/img/soul_F.svg"
+                src="/img/soul_BL.svg"
                 alt="Logo"
                 width={132}
                 height={43}
@@ -66,7 +66,7 @@ export default async function Footer() {
             <div className="flex lg:hidden items-center space-x-1 mt-0">
               {/* SVG Logo for mobile */}
               <Image
-                src="/img/soul_F.svg"
+                src="/img/soul_BL.svg"
                 alt="Logo"
                 width={132}
                 height={43}
