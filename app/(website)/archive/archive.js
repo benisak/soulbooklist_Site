@@ -36,6 +36,7 @@ export default async function Post({ searchParams }) {
             key={post._id}
             post={post}
             aspect="square"
+            fillHeight={true} // This activates the equal-height card layout
           />
         ))}
       </div>

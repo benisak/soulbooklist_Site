@@ -10,13 +10,8 @@ export default async function ArchivePage({ searchParams }) {
     <div className="bg-white py-6 px-4 md:px-[160px]">
       <div className="relative text-black">
         <h1 className="font-roboto-serif text-center text-3xl font-semibold tracking-tight dark:text-white lg:text-4xl lg:leading-snug">
-          Books
+          All content
         </h1>
-        <div className="text-center">
-          <p className="text-black text-lg mt-2">
-            See all the soul books here
-          </p>
-        </div>
         {searchParams ? (
           <Archive searchParams={searchParams} />
         ) : (
