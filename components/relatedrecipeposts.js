@@ -50,18 +50,18 @@ export default function RelatedPost({
         {/* Content */}
         <div className={`p-4 flex flex-col gap-2 ${isMobile ? "min-h-[130px]" : "flex-grow"}`}>
           {category && (
-            <div className="inline-flex">
-              <Link
-                href={`/category/${category.slug?.current}`}
-                onClick={(e) => e.stopPropagation()}
-                className="relative z-10 p-2 bg-[#E5EFF6] rounded-lg hover:bg-[#d1e3f8] transition-colors"
-              >
-                <span className="text-[#40749C] text-xs font-bold text-[12px]">
-                  {category.title || "Uncategorized"}
-                </span>
-              </Link>
-            </div>
-          )}
+          <div className="inline-flex">
+            <Link
+              href={`/category/${category.slug?.current}`}
+              onClick={(e) => e.stopPropagation()}
+              className="relative z-10 inline-flex items-center justify-center p-2 rounded-lg text-xs font-semibold leading-normal bg-[#E5EFF6] text-[#40749C] mr-2 mb-2 hover:bg-[#d1e3f8] transition-colors"
+            >
+              {category.title || "Uncategorized"}
+            </Link>
+          </div>
+        )}
+
+
 
           <h3 className="text-[#1F1F1F] text-lg font-bold leading-snug">
             {post.title}

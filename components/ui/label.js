@@ -7,11 +7,15 @@ export default function Label(props) {
   return (
     <span
       className={cx(
-        "inline-block px-2 py-2 text-[12px] font-bold leading-normal rounded-lg", // Base styles
-        // Add margin-right and margin-bottom for spacing
-        "mr-2 mb-2", // <--- ADD THIS LINE (mr-2 = margin-right: 0.5rem; mb-2 = margin-bottom: 0.5rem;)
-        !margin && "mt-2", // Your existing conditional margin-top
-        "text-[#40749C] bg-[#E5EFF6]" // Styling
+        // New design implementation from your snippet
+        "inline-flex items-center justify-center p-2 rounded-lg text-xs font-semibold leading-normal",
+        
+        // Colors from the old component, which match the new design's intent
+        "bg-[#E5EFF6] text-[#40749C]",
+        
+        // Preserving the existing margin logic
+        "mr-2 mb-2",
+        !margin && "mt-2"
       )}
     >
       {props.children}
