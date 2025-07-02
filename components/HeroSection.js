@@ -2,31 +2,29 @@ import Image from 'next/image';
 
 const HeroSection = () => {
   return (
-    <section className="w-full flex flex-col md:flex-row">
+    <section className="w-full flex flex-col md:flex-row items-center md:bg-[#40749C]">
       
-      {/* Image half */}
+      {/* Image half */}      
       <div className="w-full md:w-1/2 
-                      aspect-[708/446]      /* mobile ratio */
-                      md:h-[450px]          /* desktop */
+                      h-[210px]        /* mobile only */
+                      md:h-[450px]     /* desktop */
                       lg:h-[550px] 
                       2xl:h-[480px] 
                       3xl:h-[600px] 
-                      relative overflow-hidden">
+                      relative">
         <Image
           src="/img/HS_SB1.png"
           alt="De todo Market"
           fill
-          sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover"
           priority
-          style={{ display: 'block' }}
         />
       </div>
 
       {/* Text half */}
       <div className="w-full md:w-1/2
-                      h-[176px]             /* mobile only */
-                      md:h-[450px]          /* desktop */
+                      h-[176px]        /* mobile only */
+                      md:h-[450px]     /* desktop - same as image */
                       lg:h-[550px] 
                       2xl:h-[480px] 
                       3xl:h-[600px] 
@@ -43,7 +41,8 @@ const HeroSection = () => {
         </div>
 
         <div className="self-stretch">
-          <span className="text-[#40749C] text-lg font-normal leading-normal md:text-white md:text-xl">
+          <span className="text-[#40749C] text-lg font-normal leading-normal
+                           md:text-white md:text-xl">
             Discover meaningful reads that inspire reflection,
             <br className="hidden md:block" />
             connection, and a deeper sense of self.
