@@ -36,8 +36,8 @@ async function sharedMetaData(params: any) {
     title: {
       default:
         settings?.title ||
-        "PopCornCrtitics - Discover the best movies critics",
-      template: "%s | PopCornCrtitics - Discover the best movies critics"
+        "SoulBookList: A Guide to Religious and Spiritual Books",
+      template: "%s | Soul BookList: A Guide to Religious and Spiritual Books"
     },
     description:
       settings?.description ||
@@ -50,14 +50,14 @@ async function sharedMetaData(params: any) {
         {
           url:
             urlForImage(settings?.openGraphImage)?.src ||  
-            "/img/opengraphPCC.png",
+            "/img/opengraphSBL.png",
           width: 800,
           height: 600
         }
       ]
     },
     twitter: {
-      title: settings?.title || "PopCornCrtitics - Discover the best movies critics",
+      title: settings?.title || "Soul BookList: A Guide to Religious and Spiritual Books",
       card: "summary_large_image"
     },
     robots: {
@@ -66,13 +66,13 @@ async function sharedMetaData(params: any) {
     }
   };
 }
-const siteUrl = "https://www.popcornncritics.com"; // Ensure this is correct
+const siteUrl = "https://soulbooklist.vercel.app/"; // Ensure this is correct
 export async function generateMetadata({ params }: { params: any }) {
   const settings = await getSettings();
 
-  const siteTitle = "PopCornCrtitics - Discover the best movies critics";
+  const siteTitle = "Soul BookList: A Guide to Religious and Spiritual Books";
   const siteDescription =
-    "PopCornCritics is your ultimate destination for discovering insightful movie reviews, ratings, and critiques from top critics and passionate cinephiles. Whether you're looking for blockbuster hits, indie gems, or timeless classics, we bring you expert opinions and community-driven insights to help you pick your next favorite film."
+    "Discover a curated collection of religious and spiritual books at Soul BookList. Explore literature from diverse faiths to deepen your understanding, inspire your spiritual journey, and connect with a community of believers."
   const keywords = [
     "movie reviews", 
     "movie ratings",
@@ -90,7 +90,7 @@ export async function generateMetadata({ params }: { params: any }) {
     "movies for kids 2025"
   ];
 
-  const ogImage = `${siteUrl}/img/opengraphPCC.png`;
+  const ogImage = `${siteUrl}/img/opengraphSBL.png`;
   const twitterHandle = "@myoldwine";
 
   return {
